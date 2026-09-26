@@ -7,6 +7,8 @@ services:
     buildCommand: npm install && node database/init.js && node database/seed.js
     startCommand: node backend/server.js
     envVars:
+      - key: NODE_VERSION
+        value: 22.14.0
       - key: NODE_ENV
         value: production
       - key: PORT
