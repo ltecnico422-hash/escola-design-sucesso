@@ -187,9 +187,33 @@ async function renderApp() {
   }
 }
 
-// Inicialização da Aplicação
-window.addEventListener('DOMContentLoaded', async () => {
-  await api.ensureInitialAuth();
+// Inicialização da Aplicação com verificação de prontidão do DOM
+async function initApp() {
+  try {
+    // 1. Tenta renderizar imediatamente
+    await renderApp();
+
+    // 2. Se usuário não estiver logado, tenta autenticação inicial e atualiza
+    if (!api.getCurrentUser()) {
+      await api.ensureInitialAuth();
+      await renderApp();
+    }
+  } catch (err) {
+    console.error('Erro na inicialização da aplicação:', err);
+    // Em caso de falha, garante exibição da tela de login
+    const root = document.getElementById('root');
+    if (root) {
+      currentRoute = 'login';
+      await renderApp();
+    }
+  }
+
   window.addEventListener('auth-changed', () => renderApp());
-  renderApp();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+
