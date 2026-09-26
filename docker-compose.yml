@@ -1,0 +1,12 @@
+services:
+  escola-design:
+    build: .
+    container_name: escola_digital_design
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    volumes:
+      - ./database:/app/database

@@ -1,0 +1,19 @@
+# Dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis locais e segredos
+.env
+.env.local
+
+# Arquivos temporários do SQLite
+*.sqlite-wal
+*.sqlite-shm
+
+# Backups e logs locais
+backups/
+logs/
+.DS_Store
+Thumbs.db

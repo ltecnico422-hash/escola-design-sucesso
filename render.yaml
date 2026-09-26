@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: escola-digital-design
+    runtime: node
+    plan: free
+    region: ohio
+    buildCommand: npm install && node database/init.js && node database/seed.js
+    startCommand: node backend/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    autoDeploy: true

@@ -1,0 +1,21 @@
+{
+  "name": "sistema-designer-sucesso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "db:init": "node database/init.js",
+    "db:seed": "node database/seed.js",
+    "test": "node test_api.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
